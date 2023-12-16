@@ -21,7 +21,7 @@ class TrainerList(ListView):
     model = Trainer
     context_object_name = 'trainers'
     template_name = 'trainers.html'
-    paginate_by = 15
+    paginate_by = 5
     
 class TrainerCreateView(CreateView):
     model = Trainer
@@ -59,4 +59,15 @@ class PokemoncardCreateView(CreateView):
     model = PokemonCard
     form_class = PokemonCardForm
     template_name = 'pokemoncard_add.html'
-    success_url = reverse_lazy('pokemoncard_list')
+    success_url = reverse_lazy('pokemoncard-list')
+    
+class PokemoncardUpdateView(UpdateView):
+    model = PokemonCard
+    form_class = PokemonCardForm
+    template_name = 'pokemoncard_edit.html'
+    success_url = reverse_lazy('pokemoncard-list')
+    
+class PokemoncardDeleteView(DeleteView):
+    model = PokemonCard
+    template_name = 'pokemoncard_del.html'
+    success_url = reverse_lazy('pokemoncard-list')
