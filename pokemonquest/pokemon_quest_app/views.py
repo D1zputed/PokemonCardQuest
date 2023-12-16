@@ -1,8 +1,10 @@
 from typing import Any
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from pokemon_quest_app.models import PokemonCard
-from pokemon_quest_app.models import Trainer
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from pokemon_quest_app.models import PokemonCard, Trainer
+from pokemon_quest_app.forms import TrainerForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 class HomePageView(ListView):
@@ -19,3 +21,9 @@ class TrainerList(ListView):
     context_object_name = 'trainers'
     template_name = 'trainers.html'
     paginate_by = 15
+    
+class TrainerCreateView(CreateView):
+    model = Trainer
+    form_class = TrainerForm
+    template_name = 'trainer_add.html'
+    success_url = reverse_lazy('trainer-list')
