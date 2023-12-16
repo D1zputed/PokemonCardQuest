@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from pokemon_quest_app.models import PokemonCard, Trainer
-from pokemon_quest_app.forms import TrainerForm
+from pokemon_quest_app.forms import TrainerForm, PokemonCardForm
 from django.urls import reverse_lazy
 import json
 
@@ -54,3 +54,9 @@ class PokemonCardListView(ListView):
         with open(self.json_file_path, 'r') as file:
             data = json.load(file)
             return data.get('pokemons', [])
+        
+class PokemoncardCreateView(CreateView):
+    model = PokemonCard
+    form_class = PokemonCardForm
+    template_name = 'pokemoncard_add.html'
+    success_url = reverse_lazy('pokemoncard_list')
