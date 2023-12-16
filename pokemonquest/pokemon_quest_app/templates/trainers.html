@@ -46,7 +46,7 @@
                       <a href="trainer_list/{{ object.id }}" >Delete</a>
                     </td>
                   </tr>
-                  {% endfor %}
+                  {% empty %}
                   
                 </tbody>
             </table>
@@ -54,7 +54,7 @@
           <div>
             {% include 'includes/pagination.html' %}
           </div>
-          
+      {% endfor %}
       {% endblock %}
     </main>
 
