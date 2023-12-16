@@ -89,3 +89,8 @@ class CollectionUpdateView(UpdateView):
     form_class = CollectionForm
     template_name = 'collection_edit.html'
     success_url = reverse_lazy('collection-list')
+    
+class CollectionDeleteView(DeleteView):
+    model = Collection
+    template_name = 'collection_del.html'
+    success_url = reverse_lazy('collection-list')
