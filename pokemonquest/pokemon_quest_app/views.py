@@ -2,7 +2,7 @@ from typing import Any
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
-from pokemon_quest_app.models import PokemonCard, Trainer
+from pokemon_quest_app.models import PokemonCard, Trainer, Collection
 from pokemon_quest_app.forms import TrainerForm, PokemonCardForm
 from django.urls import reverse_lazy
 import json
@@ -71,3 +71,9 @@ class PokemoncardDeleteView(DeleteView):
     model = PokemonCard
     template_name = 'pokemoncard_del.html'
     success_url = reverse_lazy('pokemoncard-list')
+    
+class CollectionListView(ListView):
+    model = Collection
+    context_object_name = 'collections'
+    template_name = 'collections.html'
+    paginate_by = 5

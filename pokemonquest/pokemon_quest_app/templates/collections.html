@@ -1,0 +1,40 @@
+{% extends  "base.html" %}
+{% load static %}
+
+    <!--CONTENT-->
+      {% block content %}
+        <section class="collection-container">
+            <table class="styled-table">
+                <tbody>
+                  <tr>
+                    <th>Trainer Name</th>
+                    <th>Pokemon Card</th>
+                    <th>Collection Date</th>
+                    <th>Action</th>
+                  </tr>
+                  {% for collection in collections %}
+                  <!--ASH-->
+                  <tr>
+                    <td>{{ collection.trainer }}</td>
+                    <td>{{ collection.card }}</td>
+                    <td>{{ collection.collection_date }}</td>
+                    <td>
+                      <a href="collection_list/{{ collection.id }}" >Edit</a> |
+                      <a href="collection_list/{{ collection.id }}/delete" >Delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+            </table>
+        </section>
+          <div>
+            {% include 'includes/pagination.html' %}
+          </div>
+      {% endblock %}
+
+
+
+    {% include 'includes/footer.html' %}
+  </body>
+</html>
