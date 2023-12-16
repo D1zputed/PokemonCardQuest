@@ -40,13 +40,13 @@
                   <tr>
                     <td>{{ object.birthdate }}</td>
                     <td>{{ object.location }}</td>
-                    <td>{{ object.email }} </td>
+                    <td>{{ object.email }}</td>
                     <td>
                       <a href="trainer_list/{{ object.id }}" >Edit</a> |
                       <a href="trainer_list/{{ object.id }}" >Delete</a>
                     </td>
                   </tr>
-                  {% empty %}
+                  {% endfor %}
                   
                 </tbody>
             </table>
@@ -54,7 +54,6 @@
           <div>
             {% include 'includes/pagination.html' %}
           </div>
-      {% endfor %}
       {% endblock %}
     </main>
 
