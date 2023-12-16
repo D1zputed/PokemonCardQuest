@@ -32,4 +32,5 @@ urlpatterns = [
     path('pokemoncard_list/<pk>/delete', PokemoncardDeleteView.as_view(), name='trainer-delete'),
     path('collection_list', CollectionListView.as_view(), name='collection-list'),
     path('collection_list/add', CollectionCreateView.as_view(), name='collection-add'),
+    path('collection_list/<pk>', CollectionUpdateView.as_view(), name='collection-edit')
 ]

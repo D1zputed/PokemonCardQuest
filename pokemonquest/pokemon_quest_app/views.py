@@ -83,3 +83,9 @@ class CollectionCreateView(CreateView):
     form_class = CollectionForm
     template_name = 'collection_add.html'
     success_url = reverse_lazy('collection-list')
+    
+class CollectionUpdateView(UpdateView):
+    model = Collection
+    form_class = CollectionForm
+    template_name = 'collection_edit.html'
+    success_url = reverse_lazy('collection-list')
