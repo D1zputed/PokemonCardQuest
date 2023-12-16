@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from pokemon_quest_app.models import PokemonCard, Trainer, Collection
-from pokemon_quest_app.forms import TrainerForm, PokemonCardForm
+from pokemon_quest_app.forms import TrainerForm, PokemonCardForm, CollectionForm
 from django.urls import reverse_lazy
 import json
 
@@ -77,3 +77,9 @@ class CollectionListView(ListView):
     context_object_name = 'collections'
     template_name = 'collections.html'
     paginate_by = 5
+    
+class CollectionCreateView(CreateView):
+    model = Collection
+    form_class = CollectionForm
+    template_name = 'collection_add.html'
+    success_url = reverse_lazy('collection-list')
